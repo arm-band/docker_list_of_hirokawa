@@ -1,0 +1,18 @@
+version: '3.8'
+services:
+    hirokawa:
+        build:
+            context: ./docker
+            dockerfile: Dockerfile
+            args:
+                USER_NAME: $USER_NAME
+                FILE_NAME: $FILE_NAME
+        volumes:
+            # entrypoint
+            - ./entrypoint:/entrypoint
+            # workspace
+            - ./workspace:/workspace
+            # docker settings template
+            - ./template:/template
+        tty: true
+        entrypoint: /bin/sh -c "/bin/sh /entrypoint/entrypoint.sh $USER_NAME $FILE_NAME && /bin/sh"

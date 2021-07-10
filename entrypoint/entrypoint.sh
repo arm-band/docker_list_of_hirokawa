@@ -1,0 +1,1 @@
+sed -e "s/USER_NAME/${1}/gi" -e "s/FILE_NAME/${2}/gi" /template/script.sh > /var/script/script.sh
